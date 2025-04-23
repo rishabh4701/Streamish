@@ -1,0 +1,21 @@
+{
+  "name": "backend-tutorials",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Rishabh Singh",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2"
+  }
+}
