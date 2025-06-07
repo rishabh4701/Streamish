@@ -80,16 +80,18 @@ const registerUser = asyncHandler(async(req, res) => {
 
 const loginUser = asyncHandler(async(req, res) => {
     const{email, username, password} = req.body
+    console.log(email);
+    
 
-    if(!username || !email){
+    if(!username && !email){
         throw new apiError(400, "Username or Email is required")
     }
 
-    const user = await user.findOne({
+    const user = await User.findOne({
         $or: [{username}, {email}]
     })
 
-    if(!email){
+    if(!user){
         throw new apiError(404, "User does not exists")
     }
 
@@ -108,7 +110,7 @@ const loginUser = asyncHandler(async(req, res) => {
     }
 
     return res
-    .state(200)
+    .status(200)
     .cookie("accessToken", accessToken, options)
     .cookie("refreshToken", refreshToken, options)
     .json(
@@ -145,4 +147,5 @@ const logoutUser = asyncHandler(async(req, res) => {
     .clearCookie("refreshToken", options)
     .json(new apiResponse(200, {}, "User Logging Out"))
 })
+
 export {registerUser, loginUser, logoutUser}
