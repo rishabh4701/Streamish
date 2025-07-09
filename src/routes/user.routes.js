@@ -34,7 +34,7 @@ router.route("/update-details").patch(verifyJWT, updateDetails) // patch - to no
 
 router.route("/avatar").patch(verifyJWT, upload.single("avatar"), updateAvatar) // two middlewares jwt and multer(upload)
 
-router.route("/cover-image").patch(verifyJWT, upload.single("/coverImage"), updateCoverImage)
+router.route("/cover-image").patch(verifyJWT, upload.single("coverImage"), updateCoverImage)
 
 router.route("/channel/:username").get(verifyJWT, getUserChannelProfile)  // use : for params 
 
